@@ -1,0 +1,432 @@
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #1d4ed8;
+    --success-color: #22c55e;
+    --danger-color: #ef4444;
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f3f4f6;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --transition-speed: 0.3s;
+}
+
+.dark-theme {
+    --primary-color: #3b82f6;
+    --secondary-color: #60a5fa;
+    --text-primary: #f3f4f6;
+    --text-secondary: #d1d5db;
+    --bg-primary: #111827;
+    --bg-secondary: #1f2937;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--bg-primary);
+    box-shadow: 0 2px 4px var(--shadow-color);
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    animation: logoSpin 20s linear infinite;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link svg {
+    width: 24px;
+    height: 24px;
+    transition: transform var(--transition-speed);
+}
+
+.social-link:hover svg {
+    transform: scale(1.2);
+    color: var(--primary-color);
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: var(--text-primary);
+}
+
+.theme-toggle svg {
+    width: 24px;
+    height: 24px;
+}
+
+.dark-theme .sun-icon {
+    display: block;
+}
+
+.dark-theme .moon-icon {
+    display: none;
+}
+
+.light-theme .sun-icon {
+    display: none;
+}
+
+.light-theme .moon-icon {
+    display: block;
+}
+
+
+.main-content {
+    max-width: 1200px;
+    margin: 6rem auto 2rem;
+    padding: 0 1rem;
+}
+
+.calculator-container {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: var(--bg-secondary);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.display-container {
+    background-color: var(--bg-primary);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: inset 0 2px 4px var(--shadow-color);
+}
+
+.display {
+    font-family: 'Courier New', monospace;
+    font-size: 2rem;
+    text-align: right;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.calculator-type {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.type-btn {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all var(--transition-speed);
+}
+
+.type-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.calculator-buttons {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.scientific-pad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.standard-pad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+}
+
+.calc-btn {
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.calc-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.calc-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 2px var(--shadow-color);
+}
+
+.operator {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.equals {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.clear {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.zero {
+    grid-column: span 2;
+}
+
+.history-section {
+    margin-top: 1rem;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.history-toggle,
+.download-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all var(--transition-speed);
+}
+
+.history-toggle svg,
+.download-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.history-list {
+    background-color: var(--bg-primary);
+    border-radius: 8px;
+    padding: 1rem;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.history-item {
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--bg-secondary);
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+.about-section {
+    margin: 4rem 0;
+    text-align: center;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feature-card {
+    background-color: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: 12px;
+    transition: transform var(--transition-speed);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.how-to-use {
+    margin: 4rem 0;
+    text-align: center;
+}
+
+.instructions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.instruction-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.newsletter-section {
+    margin: 4rem 0;
+    text-align: center;
+    padding: 3rem;
+    background-color: var(--bg-secondary);
+    border-radius: 16px;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 2rem auto 0;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 2px solid var(--bg-primary);
+    border-radius: 8px;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.newsletter-form button {
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+
+.newsletter-form button:hover {
+    background-color: var(--secondary-color);
+}
+
+@keyframes logoSpin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.float-digit {
+    position: fixed;
+    font-size: 2rem;
+    color: var(--primary-color);
+    pointer-events: none;
+    animation: float 1s ease-out forwards;
+    opacity: 0;
+}
+
+
+@media (max-width: 768px) {
+    .nav-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .calculator-container {
+        margin: 0 auto;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.hidden {
+    display: none;
+}
